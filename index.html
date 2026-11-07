@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tamarind Roasters – Small-batch coffee</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap">
+<style>
+:root{
+  --bg:#fff0f5; --surface:#ffffff; --ink:#4a2338; --muted:#7d566b;
+  --brand:#c93a6e; --on-brand:#ffffff; --accent:#ffb3cf; --line:#f7cfdf;
+  --head:"Fredoka","Segoe UI",system-ui,sans-serif;
+  --body:"Nunito","Segoe UI",system-ui,sans-serif;
+  --step-0:clamp(1.05rem,1rem + .3vw,1.2rem);
+  --step-1:clamp(1.3rem,1.1rem + 1vw,1.75rem);
+  --step-3:clamp(2.4rem,1.4rem + 5vw,5rem);
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#2a1420; --surface:#3a1d2d; --ink:#ffe8f0; --muted:#e2b5c8;
+    --brand:#ff9ec2; --on-brand:#3a1020; --accent:#ff9ec2; --line:#5c2d44; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#2a1420; --surface:#3a1d2d; --ink:#ffe8f0; --muted:#e2b5c8;
+  --brand:#ff9ec2; --on-brand:#3a1020; --accent:#ff9ec2; --line:#5c2d44; color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font:var(--step-0)/1.65 var(--body)}
+h1,h2,h3{font-family:var(--head);line-height:1.1;margin:0 0 .5em;letter-spacing:-.02em}
+h1{font-size:var(--step-3);font-weight:700}
+h2{font-size:clamp(1.8rem,1.3rem + 2.5vw,2.8rem);font-weight:700}
+h3{font-size:var(--step-1);font-weight:700}
+p{margin:0 0 1em;max-width:62ch}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{width:min(100% - 2.5rem,70rem);margin-inline:auto}
+.skip{position:absolute;left:-999px}
+.skip:focus{left:1rem;top:1rem;background:var(--surface);padding:.5rem 1rem;z-index:10}
+
+/* Header: Flexbox */
+.site-header{background:var(--bg);border-bottom:1px solid var(--line)}
+.site-header .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.75rem 2rem;padding-block:1rem}
+.logo{font-family:var(--head);font-weight:700;font-size:1.35rem;text-decoration:none}
+.site-nav ul{display:flex;flex-wrap:wrap;gap:.25rem 1.5rem;list-style:none;margin:0;padding:0;font-family:var(--head);font-weight:500}
+.site-nav a{text-decoration:none;padding:.4rem 0;border-bottom:2px solid transparent}
+.site-nav a:hover{border-color:var(--accent)}
+
+.btn{display:inline-block;font-family:var(--head);font-weight:700;text-decoration:none;
+  background:var(--brand);color:var(--on-brand);padding:.85rem 1.6rem;border-radius:999px;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.alt{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+
+/* Hero: Grid */
+.hero{padding-block:clamp(3rem,8vw,6rem)}
+.hero .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:3rem;align-items:center}
+.hero p.lead{font-size:var(--step-1);color:var(--muted);line-height:1.45}
+.actions{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.5rem}
+.hero figure{margin:0;background:var(--brand);color:var(--on-brand);border-radius:2.5rem;padding:2rem;aspect-ratio:4/5;
+  display:flex;flex-direction:column;justify-content:flex-end}
+.hero figcaption{font-family:var(--head);font-size:var(--step-1);font-weight:700;line-height:1.2}
+.hero figcaption small{display:block;font:var(--step-0)/1.5 var(--body);opacity:.8;margin-top:.5rem}
+.bean{font-size:5rem;line-height:1;margin-bottom:auto}
+
+section{padding-block:clamp(3rem,7vw,5rem)}
+.intro{max-width:44rem;margin-bottom:2.5rem}
+
+/* Features: Grid auto-fit */
+.features .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1.5rem}
+.features article{border-top:4px solid var(--accent);padding-top:1rem}/* Menu: Grid with spanning */
+.menu{background:var(--surface)}
+.menu-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1.25rem}
+.menu-grid article{grid-column:span 4;border:1px solid var(--line);border-radius:1.5rem;padding:1.5rem;display:flex;flex-direction:column;gap:.25rem}
+.menu-grid article.wide{grid-column:span 8;background:var(--brand);color:var(--on-brand);border-color:transparent}
+.price{margin-top:auto;font-family:var(--head);font-weight:700;font-size:1.4rem}
+
+.visit .wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+address{font-style:normal}
+dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:.5rem 1.5rem}
+dt{font-family:var(--head);font-weight:700}
+dd{margin:0}
+
+.site-footer{background:var(--brand);color:var(--on-brand);padding-block:2rem}
+.site-footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem}
+.site-footer p{margin:0}
+
+@media (max-width:52rem){
+  .hero .wrap,.visit .wrap{grid-template-columns:1fr}
+  .hero figure{aspect-ratio:auto;min-height:14rem}
+  .menu-grid article,.menu-grid article.wide{grid-column:span 12}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="#top">Tamarind Roasters</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="#why">Why us</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#visit">Visit</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="wrap">
+      <div>
+        <h1 id="hero-title">Coffee roasted this week, not this year.</h1>
+        <p class="lead">We roast small batches every Tuesday and Friday in the back of our shop, and sell every bag within ten days.</p>
+        <div class="actions">
+          <a class="btn" href="#menu">See the menu</a>
+          <a class="btn alt" href="#visit">Find the shop</a>
+        </div>
+      </div>
+      <figure>
+        <div class="bean" aria-hidden="true">🌸</div>
+        <figcaption>Ethiopia Guji, washed
+          <small>Roasted Friday. Notes of peach, jasmine and black tea.</small>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="features" id="why" aria-labelledby="why-title">
+    <div class="wrap">
+      <div class="intro">
+        <h2 id="why-title">Three things we do differently</h2>
+        <p>Good coffee comes down to sourcing, roasting and brewing. We keep each one simple.</p>
+      </div>
+      <div class="grid">
+        <article>
+          <h3>Direct sourcing</h3>
+          <p>We buy from the same six farms each year and pay above fair-trade prices.</p>
+        </article>
+        <article>
+          <h3>Small batches</h3>
+          <p>Our 5 kg roaster lets us tune every origin instead of averaging it out.</p>
+        </article>
+        <article>
+          <h3>Brewed to order</h3>
+          <p>Every cup is weighed, timed and made by hand. No pots sitting on a burner.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu" id="menu" aria-labelledby="menu-title">
+    <div class="wrap">
+      <div class="intro">
+        <h2 id="menu-title">What we pour</h2>
+        <p>Our menu is short on purpose. Ask us for a taste before you decide.</p>
+      </div>
+      <div class="menu-grid">
+        <article class="wide">
+          <h3>Pour-over of the week</h3>
+          <p>A rotating single origin, brewed one cup at a time. Ask what’s on the shelf today.</p>
+          <span class="price">₹180</span>
+        </article>
+        <article>
+          <h3>Flat white</h3>
+          <p>Double ristretto with silky steamed milk.</p>
+          <span class="price">₹150</span>
+        </article>
+        <article><h3>Cold brew</h3>
+          <p>Steeped 18 hours, served over one big ice cube.</p>
+          <span class="price">₹140</span>
+        </article>
+        <article>
+          <h3>Cardamom bun</h3>
+          <p>Baked each morning by our neighbor, Lena.</p>
+          <span class="price">₹120</span>
+        </article>
+        <article>
+          <h3>Whole-bean bag</h3>
+          <p>250 g, roasted within the last ten days.</p>
+          <span class="price">₹550</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="visit" id="visit" aria-labelledby="visit-title">
+    <div class="wrap">
+      <div>
+        <h2 id="visit-title">Come say hello</h2>
+        <p>Grab a seat by the window or take a bag home. We’re a five-minute walk from the central station.</p>
+        <address>
+          12 Market Lane<br>
+          Springfield, 400001
+        </address>
+      </div>
+      <dl>
+        <dt>Mon–Fri</dt><dd>7:30 am – 6 pm</dd>
+        <dt>Saturday</dt><dd>8 am – 5 pm</dd>
+        <dt>Sunday</dt><dd>9 am – 2 pm</dd>
+      </dl>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>© 2026 Tamarind Roasters</p>
+    <p><a href="mailto:hello@tamarind.example">hello@tamarind.example</a></p>
+  </div>
+</footer>
+</body>
+</html>
